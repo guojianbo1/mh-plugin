@@ -1,0 +1,43 @@
+<idea-plugin>
+    <id>cn.bob.mh-plugin</id>
+    <name>CodeUtil</name>
+    <vendor email="840721178@qq.com" url="http://www.baidu.com">bob</vendor>
+
+    <description><![CDATA[
+      简单的代码生成工具，可指定Controller、Model、Service、Mapper生成代码放置的路径<br>
+      使用方法如下：<br>
+      <em>0. 引入插件后，重启idea，在idea下方工具栏中找到CodeUtil的tag</em><br>
+      <em>1. 连接Mysql数据库</em><br>
+      <em>2. 输入需要生成代码的表名(多个表用,隔开)</em><br>
+      <em>3. 输入各层代码所放置的项目路径和包路径</em><br>
+      <em>4. 点击生成代码，等待代码生成(注意生成后，idea加载文件会有点延时)</em><br>
+      注意事项：<br>
+      <em>1. 暂时只支持Mysql数据库</em><br>
+      <em>2. 项目路径为全路径后除包名的路径，如：E:\mystudy\mh-demo-01\src\main\java</em><br>
+      <em>3. 插件支持的idea版本为：19.3版本至20.3版本</em><br>
+      <em>4. 如果生成的文件已经存在，则不会重新生成</em><br>
+    ]]></description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+    <!-- idea-version在这里设置是不生效的，因为跟build.gradle中的intellij {version '2019.3.1'}的冲突了，
+    不过可以打完jar包后手动更改解压的文件，然后重新打回jar即可 -->
+    <idea-version since-build="193.0" until-build="203.*"/>
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <!-- Add your extensions here -->
+        <toolWindow id="CodeUtil"
+                    canCloseContents="false"
+                    anchor="bottom"
+                    factoryClass="cn.bob.idea.plugin.factory.SettingFactory"
+        />
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+<!--        <action id="MyAction" class="cn.bob.idea.plugin.MyAction" text="MyAction" description="MyAction">-->
+<!--            <add-to-group group-id="FileMenu" anchor="first"/>-->
+<!--        </action>-->
+    </actions>
+</idea-plugin>

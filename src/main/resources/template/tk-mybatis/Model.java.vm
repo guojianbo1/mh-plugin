@@ -1,0 +1,54 @@
+package ${modelPackage};
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+#if(${hasBigDecimal})
+import java.math.BigDecimal;
+#end
+import java.io.Serializable;
+import java.util.Date;
+
+/**
+ * @description: ${comments}
+ * @author: ${author}
+ * @date: ${datetime}
+ */
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "${tableName}")
+public class ${className} implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+#foreach ($column in $columns)
+
+	/**
+	 * $column.comments
+	 */
+	#if($column.columnName == $pk.columnName)
+@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	#end
+@Column(name = "$column.columnName")
+	private $column.attrType $column.attrname;
+#end
+#foreach ($column in $columns)
+
+	/** Field $column.upColumnName */
+	public static final String $column.upColumnName = "$column.attrname";
+
+	/** Databases Field DB_$column.upColumnName */
+	public static final String DB_$column.upColumnName = "$column.columnName";
+#end
+
+}

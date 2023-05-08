@@ -1,0 +1,20 @@
+package ${servicePackage}.impl;
+
+import ${mapperPackage}.${className}Mapper;
+import ${servicePackage}.${className}Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+/**
+ * @description: ${comments}
+ * @author: ${author}
+ * @date: ${datetime}
+ */
+@Service
+public class ${className}ServiceImpl implements ${className}Service {
+
+    @Autowired
+    private ${className}Mapper ${classname}Mapper;
+
+
+}
